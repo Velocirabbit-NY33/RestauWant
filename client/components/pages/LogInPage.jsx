@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // import React from 'react';
 
 const googleAuthHelper = function () {
@@ -7,6 +8,7 @@ const googleAuthHelper = function () {
 };
 
 function LogIn(props) {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   // handle input changes
@@ -23,13 +25,11 @@ function LogIn(props) {
       userName: username,
       password: password,
     }).then(res => {
-      console.log(res);
-      if (res.status === 200) {
-        window.location.assign('http://localhost:3000/');
-      }
-      setUsername('');
-      setPassword('');
+      console.log('from login page: ', res);
+      if (res.status === 200) navigate('/');
     }).catch(err => console.log(err));
+    setUsername('');
+    setPassword('');
   };
   return (
     <div className='logback'>
