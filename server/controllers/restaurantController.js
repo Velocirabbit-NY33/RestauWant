@@ -34,7 +34,6 @@ restaurantController.searchApi = (req, res, next) => {
     // Parse the returned data into a JS object
     .then((rawData) => rawData.json())
     .then((data) => {
-      console.log(data.businesses);
       console.log('Received data back from the Yelp API');
       res.locals.yelpResults = data.businesses;
       //Iterate over the business property on the object and push the first 5 results into res.locals

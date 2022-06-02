@@ -1,10 +1,12 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+const cookieController = require('../controllers/cookieController');
+const sessionController = require('../controllers/sessionController');
 require('../auth');
 
 const isLoggedIn = (req, res, next) => {
-  console.log('Request User body: ', req.user);
+  console.log('isLoggedIn: ', req.user);
   if (req.user) next();
   else res.sendStatus(200);
 };
@@ -49,6 +51,7 @@ router.get('/protected', (req, res) => {
 });
 
 router.get('/getGUser', isLoggedIn, (req, res) => {
+  console.log('REQ FROM GUSER: ', req.user);
   res.locals.loggedIn = { verified: true, fullName: req.user.name };
   res.send(res.locals.loggedIn);
 });
