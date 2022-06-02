@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const findOrCreate = require('mongoose-findorcreate')
+const findOrCreate = require('mongoose-findorcreate');
 const Schema = mongoose.Schema;
 const MONGO_URI = 'mongodb+srv://harrygandalf:clearskysmongo@cluster0.kwayq.mongodb.net/test?retryWrites=true&w=majority';
 
