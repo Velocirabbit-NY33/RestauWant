@@ -9,13 +9,28 @@ const googleAuthHelper = function () {
 function LogIn(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  // const sendToVerify = () => {
-  //   axios.post(URL_TO_VERIFY, {
-  //     username: username,
-  //     password: password,
-  //   })
-  // }
+  // handle input changes
+  // - FULL NAME HANDLER
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
+  // - USERNAME HANDLER
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+  const sendToVerify = () => {
+    axios.post('/user/login', {
+      userName: username,
+      password: password,
+    }).then(res => {
+      console.log(res);
+      if (res.status === 200) {
+        window.location.assign('http://localhost:3000/');
+      }
+      setUsername('');
+      setPassword('');
+    }).catch(err => console.log(err));
+  };
   return (
     <div className='logback'>
       <div className='logbox'>
@@ -32,6 +47,8 @@ function LogIn(props) {
 
         <div className=''>
           <input
+            onChange={usernameHandler}
+            value={username}
             className=''
             placeholder='Username'
             type='text'
@@ -43,6 +60,8 @@ function LogIn(props) {
 
         <div className=''>
           <input
+            onChange={passwordHandler}
+            value={password}
             className=''
             placeholder='Password'
             type='password'
@@ -52,12 +71,11 @@ function LogIn(props) {
           />
         </div>
 
-        <input
-          value='Log In'
+        <button
           className='logbtn'
-          type='button'
+          onClick={sendToVerify}
           // onClick={props.helperFunc}
-        />
+        >Log In</button>
       </div>
     </div>
   );

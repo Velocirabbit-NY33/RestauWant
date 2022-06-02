@@ -28,7 +28,7 @@ body {
   width: 100%;
   /* DARK MODE?
     box-shadow: 0px 5px 20px 2px #212121; */
-  box-shadow: 0px 5px 20px 2px #001B2E;
+  box-shadow: 0px 3px 20px 2px #464646;
   z-index: 100;
   padding: 1% 5%;
   display: flex;
@@ -422,6 +422,8 @@ input[type='password']:focus {
 .create-user {
     background-color: black;
     color: white;
+    padding: 0.5em 2em;
+    border: 1px solid black;
     border-radius: 10px;
 }
 .create-user:hover {

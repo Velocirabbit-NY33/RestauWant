@@ -21,7 +21,7 @@ router.get('/', userController.getAllUsers, (req, res) => {
 
 // Verify a specific user from the database
 // http://localhost:8080/user/login
-router.get('/login', userController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
+router.post('/login', userController.verifyUser, sessionController.startSession, cookieController.setSSIDCookie, (req, res) => {
   return res.sendStatus(200);
 });
 
